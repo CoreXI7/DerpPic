@@ -35,6 +35,7 @@ function getListOfDirectories( &$directories, $current_directory ){
 
 <html>
 	<head>
+		<title>DerpPic Home</title>
 		<style>
 @font-face {
     font-family: Celestia;
@@ -62,7 +63,7 @@ p {
 }
 
 .thumb_container p {
-	font-family: sans-serif;
+	font-family: Celestia;
 	font-size: 16px;
 }
 		</style>
