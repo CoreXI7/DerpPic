@@ -1,0 +1,18 @@
+services:
+  derppic:
+    build: .
+    container_name: derppic
+    restart: unless-stopped
+    ports:
+      - "8099:80"          # http://<server>:8099  (change 8099 if it's taken)
+    environment:
+      - SITE_TITLE=Victor Suarez
+      - TWITCH_CHANNEL=corexi7
+    volumes:
+      # Your pictures. Point the left side at any folder; subfolders become albums.
+      - ./media:/srv/media:ro
+      # Thumbnail cache (safe to delete; it rebuilds itself).
+      - derppic-cache:/srv/cache
+
+volumes:
+  derppic-cache:

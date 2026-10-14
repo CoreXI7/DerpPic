@@ -1,0 +1,138 @@
+/* DerpPic: the original sky-blue + Celestia font look, made responsive. */
+@font-face {
+  font-family: Celestia;
+  src: url("Celestia.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --sky: #9fe7ff;
+  --sky-deep: #6fd3f5;
+  --ink: #12313d;
+  --ink-soft: #3d6676;
+  --card: #ffffffcc;
+  --accent: #37fdfc;
+  --pink: #ff8fc8;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: #0f2a35;
+    --sky-deep: #163b4a;
+    --ink: #e4f7ff;
+    --ink-soft: #9cc6d6;
+    --card: #1b3f4ecc;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: linear-gradient(180deg, var(--sky) 0%, var(--sky-deep) 100%) fixed;
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+a { color: inherit; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
+
+.top {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;
+  padding: 8px 0 16px;
+}
+.top img.logo { height: 56px; width: auto; }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.top nav a, .celestia {
+  font-family: Celestia, cursive;
+  font-size: 26px;
+  text-decoration: none;
+}
+.top nav a:hover, .top nav a[aria-current] { color: var(--pink); }
+
+h1, h2 { font-family: Celestia, cursive; font-weight: normal; margin: 0.2em 0; }
+h1 { font-size: clamp(36px, 7vw, 64px); }
+h2 { font-size: 30px; }
+
+.crumbs { font-size: 15px; color: var(--ink-soft); margin: 4px 0 16px; overflow-wrap: anywhere; }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.tile {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+  box-shadow: 0 2px 8px #0002;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.tile:hover, .tile:focus-visible { transform: translateY(-3px); box-shadow: 0 6px 16px #0003; }
+.tile .pic {
+  aspect-ratio: 1; display: grid; place-items: center;
+  background: #ffffff55; overflow: hidden;
+}
+.tile .pic img { width: 100%; height: 100%; object-fit: cover; }
+.tile .pic .folder-icon { font-size: 56px; }
+.tile .label {
+  padding: 6px 10px; font-size: 13px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tile.album .label { font-family: Celestia, cursive; font-size: 20px; }
+.tile.album .count { color: var(--ink-soft); font-size: 12px; padding: 0 10px 8px; }
+
+.empty { padding: 40px; text-align: center; color: var(--ink-soft); }
+
+.pager { display: flex; justify-content: center; gap: 8px; margin: 24px 0; flex-wrap: wrap; }
+.pager a, .pager span {
+  padding: 6px 12px; border-radius: 999px; background: var(--card); text-decoration: none;
+}
+.pager span { opacity: .6; }
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; background: #000e; display: none;
+  align-items: center; justify-content: center; z-index: 10;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 94vw; max-height: 86vh; object-fit: contain; }
+.lightbox .cap {
+  position: absolute; bottom: 12px; left: 0; right: 0; text-align: center;
+  color: #fff; font-size: 14px; padding: 0 60px;
+}
+.lightbox .cap a { color: var(--accent); }
+.lightbox button {
+  position: absolute; background: #ffffff22; color: #fff; border: 0;
+  width: 48px; height: 48px; border-radius: 50%; font-size: 24px; cursor: pointer;
+}
+.lightbox button:hover { background: #ffffff44; }
+.lightbox .close { top: 12px; right: 12px; }
+.lightbox .prev { left: 12px; top: 50%; transform: translateY(-50%); }
+.lightbox .next { right: 12px; top: 50%; transform: translateY(-50%); }
+
+/* Home page */
+.hero { text-align: center; padding: 24px 0; }
+.hero nav { justify-content: center; }
+.hero .nom { max-width: min(520px, 90vw); height: auto; margin-top: 16px; }
+
+/* Stream page */
+.stream {
+  display: grid; grid-template-columns: 1fr 340px; gap: 12px;
+}
+.stream iframe { width: 100%; border: 0; border-radius: var(--radius); background: #000; }
+.stream .player { aspect-ratio: 16 / 9; }
+.stream .chat { height: 100%; min-height: 500px; }
+@media (max-width: 900px) {
+  .stream { grid-template-columns: 1fr; }
+  .stream .chat { min-height: 420px; }
+}
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+  .top nav a { font-size: 22px; }
+}
