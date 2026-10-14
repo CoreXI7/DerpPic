@@ -43,7 +43,7 @@ Thumbnail size and images-per-page are in `public/config.php`.
   image files can be served from it.
 - **Thumbnails** are cached (WebP, transparency kept) instead of re-made on every view.
 - **Albums** actually work now (the old folder scan never added subfolders).
-- **Responsive** layout for phones, plus dark mode.
+- **Responsive** layout for phones.
 - **Stream** uses Twitch's current embed instead of Flash.
 
 ## Putting it on the internet

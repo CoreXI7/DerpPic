@@ -20,11 +20,10 @@ page_header('Stream', 'Stream');
   const box = document.getElementById('stream');
   const ch = encodeURIComponent(box.dataset.channel);
   const parent = encodeURIComponent(location.hostname);
-  const dark = matchMedia('(prefers-color-scheme: dark)').matches ? '&darkpopout' : '';
   box.querySelector('.player').src =
     `https://player.twitch.tv/?channel=${ch}&parent=${parent}&muted=true`;
   box.querySelector('.chat').src =
-    `https://www.twitch.tv/embed/${ch}/chat?parent=${parent}${dark}`;
+    `https://www.twitch.tv/embed/${ch}/chat?parent=${parent}`;
 })();
 </script>
 <?php page_footer();

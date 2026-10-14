@@ -1,4 +1,5 @@
-/* DerpPic: the original sky-blue + Celestia font look, made responsive. */
+/* DerpPic: the original sky-blue + Celestia font look, made responsive.
+   Always light: the 2012 site was sky blue, so there is no dark mode. */
 @font-face {
   font-family: Celestia;
   src: url("Celestia.ttf") format("truetype");
@@ -14,15 +15,6 @@
   --accent: #37fdfc;
   --pink: #ff8fc8;
   --radius: 14px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sky: #0f2a35;
-    --sky-deep: #163b4a;
-    --ink: #e4f7ff;
-    --ink-soft: #9cc6d6;
-    --card: #1b3f4ecc;
-  }
 }
 
 * { box-sizing: border-box; }
